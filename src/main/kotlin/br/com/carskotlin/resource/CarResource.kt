@@ -2,8 +2,8 @@ package br.com.carskotlin.resource
 
 import br.com.carskotlin.entity.CarEntity
 import br.com.carskotlin.service.CarService
+import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
-import org.springframework.http.ResponseEntity as ResponseEntity
 
 @RestController
 @RequestMapping("cars")
@@ -17,10 +17,11 @@ class CarResource (val carService : CarService)  {
     @PutMapping("/{id}")
     fun putCar (@PathVariable("id") id : Int,
                 @RequestBody carEntity : CarEntity)
-                : ResponseEntity<CarEntity> {
+                : ResponseEntity<Void> {
           carEntity.id = id
-        val foundCarEntity : CarEntity
-                foundCarEntity = carService.update(car : CarEntity, id : Int)
+
+        val foundCarEntity : CarEntity = carService.updateCar(carEntity, id)
+        return ResponseEntity.noContent().build<Void>()
     }
 
     @GetMapping
@@ -28,13 +29,14 @@ class CarResource (val carService : CarService)  {
         return ResponseEntity.ok(carService.getCars())
     }
 
-    @GetMapping
-    fun getCar(id : Int) : ResponseEntity<CarEntity> {
+    @GetMapping("/{id}")
+    fun getCar(@PathVariable("id") id : Int) : ResponseEntity<CarEntity> {
         return ResponseEntity.ok(carService.getCar(id))
     }
 
-    @DeleteMapping
-    fun deleteCar(@PathVariable("id") id : Int) : ResponseEntity {
+    @DeleteMapping("/{id}" +
+            "")
+    fun deleteCar(@PathVariable("id") id : Int) : ResponseEntity<Void> {
         carService.deleteCar(id);
         return ResponseEntity.ok().build();
     }

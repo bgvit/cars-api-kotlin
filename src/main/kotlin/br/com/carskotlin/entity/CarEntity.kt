@@ -2,7 +2,7 @@ package br.com.carskotlin.entity
 
 import javax.persistence.*
 
-@Entity
+@Entity(name="car")
 data class CarEntity (
 
     @Id
@@ -10,7 +10,7 @@ data class CarEntity (
     var id: Int,
 
     @Column(nullable = false)
-    val name: String
+    var name: String
 
 
 )
