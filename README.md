@@ -1,4 +1,4 @@
-# cars-api-kotlin - Cars API using Kotlin language
+# Cars-api-Kotlin - Cars API using Kotlin language
 
 ## Goal
 
@@ -11,5 +11,6 @@ This project was aimed to learn about Kotlin and how to create Rest APIs using S
 
 - Clone this project;
 - Go in your IDE, import the project;
-- Wait maven to do its magic
-- SpringbootRun!
+- Wait maven to do its magic;
+- All data was stored in H2;
+- So, do SpringbootRun!
