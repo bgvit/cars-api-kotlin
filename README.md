@@ -1,4 +1,4 @@
-# Cars-api-Kotlin - Cars API using Kotlin language
+# Cars API using Kotlin language
 
 ## Goal
 
